@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace PiEarManager.Droid
 {
-    [Activity(Label = "Pi-Ear Manager", Theme = "@style/MainTheme", MainLauncher = true,
+    [Activity(Label = "Manage Pi-Ear", Theme = "@style/MainTheme", MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
