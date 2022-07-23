@@ -1,20 +1,20 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Android.App;
+using Xamarin.Forms.Xaml;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("PiEarManager.Droid")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Paied with PiEar, you can manage your server")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CompanyName")]
+[assembly: AssemblyCompany("OConnor")]
 [assembly: AssemblyProduct("PiEarManager.Droid")]
-[assembly: AssemblyCopyright("Copyright © CompanyName Year")]
-[assembly: AssemblyTrademark("CompanyTrademark")]
+[assembly: AssemblyCopyright("Copyright © Alexander O'Connor 2022")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
+[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 
 // Version information for an assembly consists of the following four values:
 //
