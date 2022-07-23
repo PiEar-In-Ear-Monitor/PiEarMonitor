@@ -1,33 +1,31 @@
-﻿using System;
+﻿using System.Threading.Tasks;
+using PiEarManager.Helpers;
+using PiEarManager.Interfaces;
+using PiEarManager.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-
 namespace PiEarManager
 {
-    public partial class App : Application
+    public partial class App
     {
         public App()
         {
             InitializeComponent();
-
             MainPage = new MainPage();
+            Task.Run(Init);
         }
-
-        protected override void OnStart()
+        private static void Init()
         {
-            // Handle when your app starts
-        }
-
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
+            var service = DependencyService.Get<IMulticastLock>();
+            service.Acquire();
+            Networking.FindServerIp();
+            while (Networking.ServerIp == null)
+            {
+                Task.Delay(500).Wait();
+            }
+            service.Release();
         }
     }
 }

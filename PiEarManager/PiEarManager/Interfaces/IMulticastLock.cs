@@ -1,4 +1,4 @@
-namespace PiEar.Interfaces
+namespace PiEarManager.Interfaces
 {
     public interface IMulticastLock
     {

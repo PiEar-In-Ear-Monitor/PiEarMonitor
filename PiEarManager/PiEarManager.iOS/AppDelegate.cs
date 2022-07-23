@@ -24,6 +24,7 @@ namespace PiEarManager.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            Xamarin.Essentials.Platform.Init(() => provide your own сurrent UIViewController provider);
 
             return base.FinishedLaunching(app, options);
         }

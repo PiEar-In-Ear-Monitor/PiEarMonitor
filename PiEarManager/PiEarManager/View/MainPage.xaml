@@ -1,14 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:PiEarManager"
-             x:Class="PiEarManager.MainPage">
+             xmlns:models="clr-namespace:PiEarManager.Model;assembly=PiEarManager"
+             xmlns:viewmodels="clr-namespace:PiEarManager.ViewModel;assembly=PiEarManager"
+             xmlns:helpers="clr-namespace:PiEarManager.Helpers;assembly=PiEarManager"
+             x:Class="PiEarManager.View.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:BoolInverter x:Key="BoolInverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="PiEar-Manager"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.BindingContext>
+        <viewmodels:DevicesViewModel x:Name="ViewModel"/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <!-- Place new controls here -->
-            <Label Text="Welcome to Xamarin.Forms!" 
-               HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />
+            <ListView x:Name="ListView" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal" x:DataType="models:Device">
+                                    <Switch IsEnabled="{Binding IsSelected, Converter={StaticResource BoolInverter}}" IsToggled="{Binding IsSelected}"/>
+                                    <Label Text="{Binding Channels, StringFormat='Channels: {0}'}" FontSize="Body" WidthRequest="120"/>
+                                    <Label Text="{Binding Name}" FontSize="Body" Padding="5,0,0,0" HorizontalOptions="EndAndExpand"/>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
